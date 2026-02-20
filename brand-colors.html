@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>УМТК - Цветовая палитра для визиток (Кабэкс 2026)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .logo {
+            font-size: 56px;
+            font-weight: 700;
+            background: linear-gradient(to right, #8B3A1A, #C44921, #DC5528);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #475569;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .event {
+            display: inline-block;
+            background: linear-gradient(to right, #8B3A1A, #C44921, #DC5528);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #C44921;
+        }
+        
+        .colors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .color-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-preview {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .color-info {
+            padding: 15px;
+        }
+        
+        .color-name {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .color-values {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .color-values div {
+            margin: 3px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .color-values strong {
+            color: #334155;
+        }
+        
+        .color-values code {
+            background: #f8fafc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .gradient-preview {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 42px;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(196, 73, 33, 0.3);
+        }
+        
+        .usage {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .usage h4 {
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+        
+        .usage ul {
+            margin-left: 20px;
+            color: #475569;
+            line-height: 1.8;
+        }
+        
+        .print-specs {
+            background: white;
+            border: 2px solid #C44921;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        
+        .print-specs h4 {
+            color: #C44921;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .print-specs table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .print-specs td {
+            padding: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .print-specs td:first-child {
+            font-weight: 600;
+            color: #334155;
+            width: 30%;
+        }
+        
+        .print-specs td:last-child {
+            color: #64748b;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .mockup {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .business-card {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bc-logo {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(to right, #8B3A1A, #C44921, #DC5528);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+        
+        .bc-company {
+            color: #334155;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .bc-contact {
+            text-align: left;
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .bc-contact div {
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 640px) {
+            .colors {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">УМТК</div>
+            <div class="tagline">Уральская Медная Торговая Компания</div>
+            <div class="event">Выставка Кабэкс • 2026</div>
+        </div>
+        
+        <!-- Main Gradient -->
+        <div class="section">
+            <h2 class="section-title">🎨 Основной медный градиент</h2>
+            <div class="gradient-preview" style="background: linear-gradient(to right, #8B3A1A, #C44921, #DC5528);">
+                УМТК
+            </div>
+            <div class="usage">
+                <h4>Использование:</h4>
+                <ul>
+                    <li>Логотип УМТК</li>
+                    <li>Все кнопки призыва к действию</li>
+                    <li>Активные ссылки в навигации</li>
+                    <li>Акцентные элементы (подчеркивания, иконки)</li>
+                    <li>Визитки — градиент для логотипа</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Color Palette -->
+        <div class="section">
+            <h2 class="section-title">🎨 Цветовая палитра</h2>
+            
+            <div class="colors">
+                <!-- Copper 1 -->
+                <div class="color-card">
+                    <div class="color-preview" style="background: #8B3A1A;">
+                        УМТК
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Темная медь</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> <code>#8B3A1A</code></div>
+                            <div><strong>RGB:</strong> <code>139, 58, 26</code></div>
+                            <div><strong>CMYK:</strong> <code>0, 58, 81, 45</code></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Copper 2 (Main) -->
+                <div class="color-card">
+                    <div class="color-preview" style="background: #C44921;">
+                        УМТК
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Медь (ОСНОВНОЙ)</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> <code>#C44921</code></div>
+                            <div><strong>RGB:</strong> <code>196, 73, 33</code></div>
+                            <div><strong>CMYK:</strong> <code>0, 63, 83, 23</code></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Copper 3 -->
+                <div class="color-card">
+                    <div class="color-preview" style="background: #DC5528;">
+                        УМТК
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Яркая медь</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> <code>#DC5528</code></div>
+                            <div><strong>RGB:</strong> <code>220, 85, 40</code></div>
+                            <div><strong>CMYK:</strong> <code>0, 61, 82, 14</code></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dark Gray -->
+                <div class="color-card">
+                    <div class="color-preview" style="background: #334155;">
+                        УМТК
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Темно-серый (текст)</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> <code>#334155</code></div>
+                            <div><strong>RGB:</strong> <code>51, 65, 85</code></div>
+                            <div><strong>CMYK:</strong> <code>40, 24, 0, 67</code></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Light Gray -->
+                <div class="color-card">
+                    <div class="color-preview" style="background: #f8fafc; color: #334155;">
+                        УМТК
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Светло-серый (фон)</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> <code>#F8FAFC</code></div>
+                            <div><strong>RGB:</strong> <code>248, 250, 252</code></div>
+                            <div><strong>CMYK:</strong> <code>2, 1, 0, 1</code></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer Dark -->
+                <div class="color-card">
+                    <div class="color-preview" style="background: #1e293b;">
+                        УМТК
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Темный фон</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> <code>#1E293B</code></div>
+                            <div><strong>RGB:</strong> <code>30, 41, 59</code></div>
+                            <div><strong>CMYK:</strong> <code>49, 31, 0, 77</code></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Print Specs -->
+        <div class="section">
+            <h2 class="section-title">🖨️ Спецификации для печати визиток</h2>
+            
+            <div class="print-specs">
+                <h4>Рекомендации для типографии:</h4>
+                <table>
+                    <tr>
+                        <td>Основной цвет логотипа</td>
+                        <td>#C44921 (RGB: 196, 73, 33)</td>
+                    </tr>
+                    <tr>
+                        <td>CMYK для печати</td>
+                        <td>C:0 M:63 Y:83 K:23</td>
+                    </tr>
+                    <tr>
+                        <td>Pantone (приблизительно)</td>
+                        <td>Pantone 7599 C (медь)</td>
+                    </tr>
+                    <tr>
+                        <td>Цвет текста</td>
+                        <td>#334155 (RGB: 51, 65, 85)</td>
+                    </tr>
+                    <tr>
+                        <td>Шрифт</td>
+                        <td>Arial Bold / SF Pro Display Bold</td>
+                    </tr>
+                    <tr>
+                        <td>Размер логотипа</td>
+                        <td>24-32px (зависит от размера визитки)</td>
+                    </tr>
+                    <tr>
+                        <td>Формат файла</td>
+                        <td>PDF/AI с векторным логотипом</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="usage" style="margin-top: 20px;">
+                <h4>💡 Совет для градиента на визитке:</h4>
+                <ul>
+                    <li>Если типография поддерживает градиент — используйте полный градиент (#8B3A1A → #C44921 → #DC5528)</li>
+                    <li>Если НЕТ — используйте центральный цвет <strong>#C44921</strong> для всего логотипа</li>
+                    <li>Для максимального эффекта — заказывайте визитки с <strong>металлизированным покрытием</strong></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Business Card Mockup -->
+        <div class="section">
+            <h2 class="section-title">💳 Макет визитки</h2>
+            
+            <div class="mockup">
+                <div class="business-card">
+                    <div class="bc-logo">УМТК</div>
+                    <div class="bc-company">Уральская Медная Торговая Компания</div>
+                    <div style="height: 1px; background: linear-gradient(to right, #8B3A1A, #C44921, #DC5528); margin: 20px 0;"></div>
+                    <div class="bc-contact">
+                        <div><strong>Телефон:</strong> +7 (964) 574-80-60</div>
+                        <div><strong>Email:</strong> sales@umtk.su</div>
+                        <div><strong>Адрес:</strong> Москва, Нащокинский пер. 10</div>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; color: #64748b; font-size: 14px;">
+                    Размеры визитки: 90×50 мм (стандарт) | Бумага: 300 г/м² | Отделка: матовая ламинация
+                </p>
+            </div>
+        </div>
+        
+        <!-- Download Section -->
+        <div class="section">
+            <h2 class="section-title">📥 Скачать материалы</h2>
+            
+            <div style="display: grid; gap: 15px; max-width: 600px;">
+                <a href="../export-standalone/full-page.html" style="display: block; background: linear-gradient(to right, #8B3A1A, #C44921, #DC5528); color: white; padding: 15px 25px; border-radius: 10px; text-decoration: none; font-weight: 600; text-align: center;">
+                    📄 Скачать полную HTML-страницу
+                </a>
+                <a href="../EXPORT-GUIDE.md" style="display: block; background: #334155; color: white; padding: 15px 25px; border-radius: 10px; text-decoration: none; font-weight: 600; text-align: center;">
+                    📖 Инструкция по экспорту
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
